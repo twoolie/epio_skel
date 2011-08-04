@@ -3,4 +3,6 @@
 *.swp
 *.un~
 *.db
-static_root/
+/media/*
+/static_root/*
+

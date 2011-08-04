@@ -1,0 +1,6 @@
+syntax: regex
+^media/
+^static/
+^.gitignore$
+^.hg/
+

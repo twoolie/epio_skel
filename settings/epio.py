@@ -1,6 +1,9 @@
 from __future__ import absolute_import
 from .base import *
 
+MEDIA_ROOT = PROJECT_DIR.parent.child('data')
+STATIC_ROOT = PROJECT_DIR.child('static')
+
 from bundle_config import config
 DATABASES = {
     'default': {
