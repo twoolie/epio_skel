@@ -7,13 +7,15 @@ def staging():
     env['epioapp'] = # staging epio instance
 
 def epio(commandstring):
-    local("epio {0} -a {1}".format(
-        commandstring,
-        env['epioapp']))
+    from os import path
+    with lcd(path.dirname(__file__)):
+        local("epio {0} -a {1}".format(
+            commandstring,
+            env['epioapp']))
 
 def deploy():
     """ An example deploy workflow """
-    local("./manage.py collectstatic")
+    local("./manage.py collectstatic --noinput")
     epio('upload')
     epio('django syncdb')
     epio('django migrate')
