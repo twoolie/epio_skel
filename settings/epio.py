@@ -2,7 +2,7 @@ from __future__ import absolute_import
 from .base import *
 
 MEDIA_ROOT = PROJECT_DIR.parent.child('data')
-STATIC_ROOT = PROJECT_DIR.child('static')
+STATIC_ROOT = PROJECT_DIR.child('static-root')
 
 from bundle_config import config
 DATABASES = {
@@ -18,9 +18,7 @@ DATABASES = {
 CACHES = {
     'default': {
         'BACKEND': 'redis_cache.RedisCache',
-        'LOCATION': '{host}:{port}'.format(
-                host=config['redis']['host'],
-                port=config['redis']['port']),
+        'LOCATION': '%(host)s:%(port)s' % config['redis'],
         'OPTIONS': {
             'PASSWORD': config['redis']['password'],
         },
